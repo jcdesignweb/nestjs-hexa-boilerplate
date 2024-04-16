@@ -53,14 +53,14 @@ this is a example project using an hexagonal software architecture for NestJS.
 Clone the project
 
 ```bash
-  git clone https://github.com/jcdesignweb/fastcsv.git
+  git clone https://github.com/jcdesignweb/nestjs-hexa-boilerplate.git
 
 ```
 
 Go to the project directory
 
 ```bash
-  cd /project
+  cd /nestjs-hexa-boilerplate
 ```
 
 Install dependencies
@@ -73,6 +73,12 @@ Run tests
 
 ```bash
   yarn test
+```
+
+Run tests e2e
+
+```bash
+  yarn test:e2e
 ```
 
 
