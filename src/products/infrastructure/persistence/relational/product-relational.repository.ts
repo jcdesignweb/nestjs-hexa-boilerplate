@@ -1,12 +1,12 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Product } from '../../../../domain/product';
-import { IProductRepository } from '../../../../../products/domain/ports/outbound/IProductRepository.outbound';
-import { ProductEntity } from '../../../../../products/infrastructure/entities/product.entity';
 import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ProductRepository } from '../../../domain/ports/outbound/productRepository.outbound';
+import { ProductEntity } from '../../entities/product.entity';
+import { Product } from '../../../../products/domain/product';
 
 @Injectable()
-export class ProductRelationalRepository implements IProductRepository {
+export class ProductRelationalRepository implements ProductRepository {
   private logger = new Logger(ProductRelationalRepository.name);
   constructor(
     @InjectRepository(ProductEntity)
@@ -14,18 +14,12 @@ export class ProductRelationalRepository implements IProductRepository {
   ) {}
 
   async getById(id: string): Promise<Product> {
-    console.log(
-      '###############--------------------------------------------------##############',
-    );
     const productEntity = await this.repository.findOneBy({ id });
 
     return Product.fromPrimitives(productEntity);
   }
 
   async save(product: Product): Promise<Product> {
-    console.log(
-      '-----------------------------------------------------------------------',
-    );
     this.logger.log(
       `Inserting a new product ${JSON.stringify(product.toPrimitives(), null, 2)}`,
     );

@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { IProductRepository } from '../../../../products/domain/ports/outbound/IProductRepository.outbound';
+import { ProductRepository } from '../../../domain/ports/outbound/productRepository.outbound';
 import { Product } from '../../../../products/domain/product';
 
 @Injectable()
-export class ProductMemoryRepository implements IProductRepository {
+export class ProductMemoryRepository implements ProductRepository {
   private readonly products: Product[] = [];
 
   private logger = new Logger(ProductMemoryRepository.name);

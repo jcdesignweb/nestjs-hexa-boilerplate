@@ -58,6 +58,5 @@ describe('ProductController (e2e)', () => {
     );
 
     expect(product.name).toEqual(COCA_COLA.name);
-    console.log('GET PRODUCT', product);
   });
 });

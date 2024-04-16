@@ -8,8 +8,6 @@ export class FindByProductIdUseCase {
   async execute(productId: string) {
     const product = await this.productService.getByProductId(productId);
 
-    console.log('SELECTED PRODUCT', product);
-
     return product;
   }
 }

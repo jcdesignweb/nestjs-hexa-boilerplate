@@ -6,6 +6,7 @@ import { DatabaseConfig } from './shared/config/database.config';
 import { SharedModule } from './shared/shared.module';
 import { CategoryEntity } from './products/infrastructure/entities/category.entity';
 import { ProductModule } from './products/product.module';
+import { defaultConfig } from './shared/config/default.config';
 
 export const PRODUCT_APPLICATION = 'PRODUCT_APPLICATION';
 
@@ -15,6 +16,7 @@ export const PRODUCT_APPLICATION = 'PRODUCT_APPLICATION';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      load: [defaultConfig],
     }),
     SharedModule,
     TypeOrmModule.forRootAsync({

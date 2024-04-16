@@ -1,15 +1,18 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { CreateProductDTO } from '../../../products/infrastructure/controller/v1/dto/createProduct.dto';
 import { Product } from '../product';
 import { v4 as generateUuid } from 'uuid';
 import { ProductNotFound } from '../error/productNotFound.error';
-import { ProductRelationalRepository } from '../../../products/infrastructure/persistence/relational/product-relational.repository';
+import { ProductRepository } from '../ports/outbound/productRepository.outbound';
 
 @Injectable()
 export class ProductService {
   private logger = new Logger(ProductService.name);
 
-  constructor(private productRepository: ProductRelationalRepository) {}
+  constructor(
+    @Inject(ProductRepository)
+    private productRepository: ProductRepository,
+  ) {}
 
   create(createProduct: CreateProductDTO): Product {
     this.logger.log(

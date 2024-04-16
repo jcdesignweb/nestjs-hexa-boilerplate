@@ -1,16 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Logger } from '@nestjs/common';
 import { AppModule } from '../../src/app.module';
-import { EntityManager } from 'typeorm';
-
-async function clearDatabase(client: TestingModule) {
-  const entityManager = client.get<EntityManager>(EntityManager);
-  const tableNames = entityManager.connection.entityMetadatas
-    .map((entity) => entity.tableName)
-    .join(', ');
-
-  await entityManager.query(`truncate ${tableNames} restart identity cascade;`);
-}
 
 export async function createClient() {
   const client: TestingModule = await Test.createTestingModule({
@@ -18,8 +8,6 @@ export async function createClient() {
   })
     .setLogger(new Logger())
     .compile();
-
-  clearDatabase(client);
 
   return client;
 }
