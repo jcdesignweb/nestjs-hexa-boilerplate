@@ -11,7 +11,7 @@ export class ProductMemoryRepository implements IProductRepository {
   async getById(id: string): Promise<Product> {
     const product = this.products.find((p: Product) => p.getId() == id);
 
-    return product
+    return product;
   }
 
   async save(product: Product): Promise<Product> {

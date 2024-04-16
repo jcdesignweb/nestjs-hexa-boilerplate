@@ -9,11 +9,7 @@ import { ProductRelationalRepository } from '../../../products/infrastructure/pe
 export class ProductService {
   private logger = new Logger(ProductService.name);
 
-  constructor(
-    //@InjectRepository(ProductEntity)
-    //private readonly product: ProductRelationalRepository,
-    private productRepository: ProductRelationalRepository,
-  ) {}
+  constructor(private productRepository: ProductRelationalRepository) {}
 
   create(createProduct: CreateProductDTO): Product {
     this.logger.log(
