@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ProductService } from '../../domain/services/product.service';
 
 @Injectable()
@@ -8,8 +8,8 @@ export class FindByProductIdUseCase {
   async execute(productId: string) {
     const product = await this.productService.getByProductId(productId);
 
-    console.log("SELECTED PRODUCT", product)
+    console.log('SELECTED PRODUCT', product);
 
-    return product
+    return product;
   }
 }

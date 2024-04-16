@@ -1,8 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Logger } from '@nestjs/common';
 import { AppModule } from '../../src/app.module';
-import { Product } from 'src/products/domain/product';
-import { ProductEntity } from 'src/products/infrastructure/entities/product.entity';
 import { EntityManager } from 'typeorm';
 
 async function clearDatabase(client: TestingModule) {
@@ -12,7 +10,6 @@ async function clearDatabase(client: TestingModule) {
     .join(', ');
 
   await entityManager.query(`truncate ${tableNames} restart identity cascade;`);
-  
 }
 
 export async function createClient() {
@@ -22,12 +19,9 @@ export async function createClient() {
     .setLogger(new Logger())
     .compile();
 
-  clearDatabase(client)
+  clearDatabase(client);
 
   return client;
 }
 
-
-export {
-  
-}
+export {};

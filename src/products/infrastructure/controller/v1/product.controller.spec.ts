@@ -8,7 +8,7 @@ describe('ProductsController', () => {
   let appClient: TestingModule;
 
   beforeEach(async () => {
-    appClient = await createClient()
+    appClient = await createClient();
 
     productsController = appClient.get<ProductsController>(ProductsController);
   });
@@ -29,10 +29,10 @@ describe('ProductsController', () => {
 
       const creation = await productsController.create(newProduct);
 
-      expect(creation).not.toEqual(false)
+      expect(creation).not.toEqual(false);
 
       if (creation) {
-        const product = creation.toPrimitives()
+        const product = creation.toPrimitives();
         expect(product.name).toBe(newProduct.name);
       }
     });

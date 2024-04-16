@@ -1,8 +1,7 @@
 export class ProductNotFound extends Error {
   constructor(message?: string) {
-    super()
+    super();
 
-    this.message = message ?? 'Product Not Found'
-    
+    this.message = message ?? 'Product Not Found';
   }
 }

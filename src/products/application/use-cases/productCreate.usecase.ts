@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ProductService } from '../../domain/services/product.service';
 import { CreateProductDTO } from '../../infrastructure/controller/v1/dto/createProduct.dto';
 import { Product } from '../../domain/product';

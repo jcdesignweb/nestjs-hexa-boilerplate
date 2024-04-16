@@ -1,14 +1,28 @@
-import { Body, Controller, Get, Logger, Param, Post, Query, UseFilters } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Logger,
+  Post,
+  Query,
+  UseFilters,
+} from '@nestjs/common';
 
 import { CreateProductDTO } from './dto/createProduct.dto';
-import { ProductCreateUseCase, FindByProductIdUseCase } from '../../../../products/application/use-cases';
+import {
+  ProductCreateUseCase,
+  FindByProductIdUseCase,
+} from '../../../../products/application/use-cases';
 
 @Controller('v1/products')
 @UseFilters()
 export class ProductsController {
   private logger: Logger = new Logger(ProductsController.name);
 
-  constructor(private productCreation: ProductCreateUseCase, private getProductUseCase: FindByProductIdUseCase) {}
+  constructor(
+    private productCreation: ProductCreateUseCase,
+    private getProductUseCase: FindByProductIdUseCase,
+  ) {}
 
   @Post()
   async create(@Body() productCreator: CreateProductDTO) {
@@ -21,8 +35,6 @@ export class ProductsController {
 
   @Get()
   async getOneById(@Query() query) {
-
-
     return await this.getProductUseCase.execute(query.product_id);
   }
 }

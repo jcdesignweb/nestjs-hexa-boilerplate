@@ -1,7 +1,6 @@
 import {
   Column,
   Entity,
-  PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
   BaseEntity,
@@ -38,5 +37,4 @@ export class ProductEntity extends BaseEntity {
   @ManyToOne(() => CategoryEntity)
   @JoinColumn({ name: 'category_id' })
   category: CategoryEntity;
-
 }

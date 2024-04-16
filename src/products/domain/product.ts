@@ -1,4 +1,3 @@
-
 export type ProductPrimitives = {
   id: string;
   name: string;
@@ -8,25 +7,21 @@ export type ProductPrimitives = {
   isActive: boolean;
   createdAt: Date;
   updatedAt?: Date;
-}
+};
 
 export class Product {
-  
   constructor(
     private readonly id: string,
-    private name: string,    
+    private name: string,
     private price: number,
     private mainImage: string,
     private isActive: boolean,
-    private createdAt: Date,    
+    private createdAt: Date,
     private updatedAt?: Date,
     private description?: string,
   ) {}
 
-  static fromPrimitives(
-    p: ProductPrimitives
-
-  ) {
+  static fromPrimitives(p: ProductPrimitives) {
     const product = new Product(
       p.id,
       p.name,
@@ -37,7 +32,6 @@ export class Product {
       p.updatedAt,
       p.description,
     );
-   
 
     return product;
   }
@@ -50,18 +44,20 @@ export class Product {
       price: this.price,
       isActive: this.isActive,
       createdAt: this.createdAt,
-    }
+    };
 
     if (this.description) {
-      primitives.description = this.description
+      primitives.description = this.description;
     }
 
     if (this.updatedAt) {
-      primitives.updatedAt = this.updatedAt
+      primitives.updatedAt = this.updatedAt;
     }
 
-    return primitives
+    return primitives;
   }
 
-  getId() { return this.id }
+  getId() {
+    return this.id;
+  }
 }

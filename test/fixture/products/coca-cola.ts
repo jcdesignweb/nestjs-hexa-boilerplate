@@ -1,4 +1,4 @@
-import { Product, ProductPrimitives } from 'src/products/domain/product';
+import { ProductPrimitives } from 'src/products/domain/product';
 import { v4 as generateUuid } from 'uuid';
 
 export const COCA_COLA: ProductPrimitives = {
@@ -8,5 +8,5 @@ export const COCA_COLA: ProductPrimitives = {
   price: 100,
   mainImage: 'some-image.jpg',
   isActive: true,
-  createdAt: new Date()
+  createdAt: new Date(),
 };

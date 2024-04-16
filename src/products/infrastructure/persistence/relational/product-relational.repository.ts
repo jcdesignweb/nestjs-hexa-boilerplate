@@ -7,23 +7,29 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class ProductRelationalRepository implements IProductRepository {
-  private logger = new Logger(ProductRelationalRepository.name)
+  private logger = new Logger(ProductRelationalRepository.name);
   constructor(
     @InjectRepository(ProductEntity)
     private repository: Repository<ProductEntity>,
   ) {}
 
   async getById(id: string): Promise<Product> {
-    console.log("###############--------------------------------------------------##############")
-    const productEntity = await this.repository.findOneBy({ id })
+    console.log(
+      '###############--------------------------------------------------##############',
+    );
+    const productEntity = await this.repository.findOneBy({ id });
 
     return Product.fromPrimitives(productEntity);
   }
 
   async save(product: Product): Promise<Product> {
-    console.log("-----------------------------------------------------------------------")
-    this.logger.log(`Inserting a new product ${JSON.stringify(product.toPrimitives(), null, 2)}`)
-    const productEntity = await this.repository.save(product.toPrimitives())
+    console.log(
+      '-----------------------------------------------------------------------',
+    );
+    this.logger.log(
+      `Inserting a new product ${JSON.stringify(product.toPrimitives(), null, 2)}`,
+    );
+    const productEntity = await this.repository.save(product.toPrimitives());
 
     return Product.fromPrimitives(productEntity);
   }

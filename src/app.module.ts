@@ -9,11 +9,10 @@ import { ProductModule } from './products/product.module';
 
 export const PRODUCT_APPLICATION = 'PRODUCT_APPLICATION';
 
-
 @Module({
   providers: [],
   exports: [],
-  imports: [    
+  imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
